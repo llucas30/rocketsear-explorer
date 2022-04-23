@@ -104,6 +104,8 @@ fieldset legend{
   border-radius: 8px;
   height: 56px;
   margin-bottom: 16px;
+
+  padding: 0 24px;
 }
 
 .input-wrapper input:invalid {
@@ -130,4 +132,26 @@ form fieldset .fieldset-wrapper .col-3 > div:nth-child(1) {
 
 form fieldset .fieldset-wrapper .col-3 > div:nth-child(2),  form fieldset .fieldset-wrapper .col-3 > div:nth-child(3){
   width: 140px;
+}
+
+footer{
+  background: #535971;
+  height: 160px;
+  border-radius: 0 0 20px 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+footer button{
+  font-family: 'Staatliches', cursive;
+  color: white;
+  border: none;
+  background: #FF5374;
+  border-radius: 20px;
+  width: 608px;
+  height: 56px;
+  
 }
