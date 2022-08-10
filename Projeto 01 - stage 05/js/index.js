@@ -1,8 +1,5 @@
-import Sound from './sounds.js'
-import Events from './functions.js'
+import Functions from './functions.js'
 
-const events = Events()
-const sound = Sound()
 const buttonPlay = document.querySelector('.play')
 const buttonPause = document.querySelector('.pause')
 const buttonStop = document.querySelector('.stop')
@@ -17,85 +14,35 @@ const buttonFire = document.querySelector('.fireplace')
 const minutesDisplay = document.querySelector('.minutes')
 const secondsDisplay = document.querySelector('.seconds')
 
-let seconds = Number(secondsDisplay.textContent)
 let minutes = Number(minutesDisplay.textContent)
 let timer
 
-function updateTimer(minutes, seconds) {
-  minutesDisplay.textContent = String(minutes).padStart(2, '0')
-  secondsDisplay.textContent = String(seconds).padStart(2, '0')
-}
-
-function resetTimer() {
-  updateTimer(minutes, 0)
-  clearTimeout(timer)
-}
-
-function pause() {
-  clearTimeout(timer)
-}
-
-function countdown() {
-  timer = setTimeout(function () {
-    let seconds = Number(secondsDisplay.textContent)
-    let minutes = Number(minutesDisplay.textContent)
-
-    if (minutes == 0 && seconds == 0) {
-      resetTimer()
-      return
-    }
-
-    if (seconds <= 0) {
-      seconds = 60
-      minutes--
-    }
-
-    updateTimer(minutes, String(seconds - 1))
-
-    countdown()
-  }, 1000)
-}
-
-function more() {
-  if (Number(minutesDisplay.textContent) >= 55) {
-    return
-  }
-  // minutes += 5
-  updateTimer(Number(minutesDisplay.textContent)+5, secondsDisplay.textContent)
-}
-
-function less() {
-  if (Number(minutesDisplay.textContent) <= 5) {
-    return
-  }
-  // minutes -= 5
-  updateTimer(Number(minutesDisplay.textContent)-5, secondsDisplay.textContent)
-}
+const functions = Functions({minutes, timer, minutesDisplay, secondsDisplay})
 
 buttonPlay.addEventListener('click', function () {
   buttonPlay.classList.toggle('hide')
   buttonPause.classList.toggle('hide')
-  countdown()
+  functions.countdown()
 })
 
 buttonPause.addEventListener('click', function () {
   buttonPlay.classList.toggle('hide')
   buttonPause.classList.toggle('hide')
-  pause()
+  functions.pause()
 })
 
 buttonStop.addEventListener('click', function () {
   buttonPlay.classList.remove('hide')
   buttonPause.classList.add('hide')
-  resetTimer()
+  functions.resetTimer()
 })
 
 buttonPlus.addEventListener('click', function () {
-  more()
+  functions.more()
 })
 
 buttonMinus.addEventListener('click', function () {
-  less()
+  functions.less()
 })
 
 buttonCoffe.addEventListener('click', function () {
@@ -103,7 +50,7 @@ buttonCoffe.addEventListener('click', function () {
   buttonFire.classList.remove('selected')
   buttonForest.classList.remove('selected')
   buttonRain.classList.remove('selected')
-  events.playPauseSounds()
+  functions.playPauseSounds()
 })
 
 buttonFire.addEventListener('click', function () {
@@ -111,7 +58,7 @@ buttonFire.addEventListener('click', function () {
   buttonFire.classList.toggle('selected')
   buttonForest.classList.remove('selected')
   buttonRain.classList.remove('selected')
-  events.playPauseSounds()
+  functions.playPauseSounds()
 })
 
 buttonForest.addEventListener('click', function () {
@@ -119,7 +66,7 @@ buttonForest.addEventListener('click', function () {
   buttonFire.classList.remove('selected')
   buttonForest.classList.toggle('selected')
   buttonRain.classList.remove('selected')
-  events.playPauseSounds()
+  functions.playPauseSounds()
 })
 
 buttonRain.addEventListener('click', function () {
@@ -127,12 +74,14 @@ buttonRain.addEventListener('click', function () {
   buttonFire.classList.remove('selected')
   buttonForest.classList.remove('selected')
   buttonRain.classList.toggle('selected')
-  events.playPauseSounds()
+  functions.playPauseSounds()
 })
 
 export {
   buttonCoffe, 
   buttonFire, 
   buttonForest, 
-  buttonRain
+  buttonRain, 
+  buttonPause, 
+  buttonPlay
 }

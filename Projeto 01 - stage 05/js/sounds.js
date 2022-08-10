@@ -4,6 +4,7 @@ export default function() {
   const rainAudio = new Audio("./sounds/Chuva.wav")
   const fireAudio = new Audio("./sounds/Lareira.wav")
   const coffeAudio = new Audio("./sounds/Cafeteria.wav")
+  const kitchenTimer = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/kichen-timer.mp3?raw=true")
 
   fireAudio.loop = true
   coffeAudio.loop = true
@@ -15,6 +16,7 @@ export default function() {
     forestAudio, 
     rainAudio, 
     fireAudio, 
-    coffeAudio
+    coffeAudio, 
+    kitchenTimer
   }
 }
