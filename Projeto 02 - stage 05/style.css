@@ -11,8 +11,8 @@
   --dark-primary-color: #c4c4cc;
   --card-bg: #e1e1e6;
   --dark-card-bg: #29292e;
-  --card-selected: #02799d;
-  --dark-card-selected: #0a3442;
+  --card-active: #02799d;
+  --dark-card-active: #0a3442;
 }
 
 body {
@@ -50,12 +50,12 @@ button {
   position: relative;
 }
 
-.sound-btns .card.selected input[type='range'] {
+.sound-btns .card.active input[type='range'] {
   background: white;
   background-image: white;
 }
 
-.sound-btns .card.selected input[type='range']::-webkit-slider-thumb {
+.sound-btns .card.active input[type='range']::-webkit-slider-thumb {
   background: white;
 }
 
@@ -114,11 +114,11 @@ aside {
   grid-gap: 3.2rem;
 }
 
-.wrapper .sound-btns .selected svg path:nth-child(1) {
-  fill: var(--card-selected);
+.wrapper .sound-btns .active svg path:nth-child(1) {
+  fill: var(--card-active);
 }
 
-.selected path:nth-child(2) {
+.active path:nth-child(2) {
   fill: white;
 }
 
@@ -138,5 +138,5 @@ aside {
   background-color: #121214;
   --primary-color: var(--dark-primary-color);
   --card-bg: var(--dark-card-bg);
-  --card-selected: var(--dark-card-selected);
+  --card-active: var(--dark-card-active);
 }

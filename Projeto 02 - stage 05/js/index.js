@@ -1,83 +1,97 @@
-import Functions from './functions.js'
+import Timer from './timer.js'
+import Sounds from './sounds.js'
+import {
+  buttonPause,
+  buttonPlay,
+  minutesDisplay,
+  secondsDisplay,
+  buttonStop,
+  buttonPlus,
+  buttonMinus,
+  buttonDark,
+  buttonLight,
+  coffeeCard, 
+  buttonCoffee,
+  coffeeVolume,
+  fireCard, 
+  buttonFire,
+  fireVolume,
+  forestCard,  
+  buttonForest,
+  forestVolume,
+  rainCard, 
+  buttonRain,
+  rainVolume
+} from './elements.js'
 
-const buttonPlay = document.querySelector('.play')
-const buttonPause = document.querySelector('.pause')
-const buttonStop = document.querySelector('.stop')
-const buttonPlus = document.querySelector('.plus')
-const buttonMinus = document.querySelector('.minus')
-
-const buttonLight = document.querySelector('.light')
-const buttonDark = document.querySelector('.dark')
-
-const buttonForest = document.querySelector('.forest')
-const buttonRain = document.querySelector('.rain')
-const buttonCoffe = document.querySelector('.coffe')
-const buttonFire = document.querySelector('.fireplace')
-
-const minutesDisplay = document.querySelector('.minutes')
-const secondsDisplay = document.querySelector('.seconds')
-
-let minutes = Number(minutesDisplay.textContent)
-let timer
-
-const functions = Functions({minutes, timer, minutesDisplay, secondsDisplay})
+const timer = Timer({ minutesDisplay, secondsDisplay })
+const sounds = Sounds()
 
 buttonPlay.addEventListener('click', function () {
   buttonPlay.classList.toggle('hide')
   buttonPause.classList.toggle('hide')
-  functions.countdown()
+  sounds.pressButton(sounds.buttonPressAudio)
+  timer.countdown()
 })
 
 buttonPause.addEventListener('click', function () {
   buttonPlay.classList.toggle('hide')
   buttonPause.classList.toggle('hide')
-  functions.pause()
+  sounds.pressButton(sounds.buttonPressAudio)
+  timer.pause()
 })
 
 buttonStop.addEventListener('click', function () {
   buttonPlay.classList.remove('hide')
   buttonPause.classList.add('hide')
-  functions.resetTimer()
+  sounds.pressButton(sounds.buttonPressAudio)
+  timer.reset()
 })
 
 buttonPlus.addEventListener('click', function () {
-  functions.more()
+  sounds.pressButton(sounds.buttonPressAudio)
+  timer.more()
 })
 
 buttonMinus.addEventListener('click', function () {
-  functions.less()
+  sounds.pressButton(sounds.buttonPressAudio)
+  timer.less()
 })
 
-buttonCoffe.addEventListener('click', function () {
-  buttonCoffe.classList.toggle('selected')
-  buttonFire.classList.remove('selected')
-  buttonForest.classList.remove('selected')
-  buttonRain.classList.remove('selected')
-  functions.playPauseSounds()
+buttonCoffee.addEventListener('click', function () {
+  coffeeCard.classList.toggle('active')
+  sounds.playAudio(sounds.coffeeAudio, coffeeCard)
+})
+
+coffeeVolume.addEventListener('input', function () {
+  sounds.adjustVolume(sounds.coffeeAudio, coffeeVolume.value)
 })
 
 buttonFire.addEventListener('click', function () {
-  buttonCoffe.classList.remove('selected')
-  buttonFire.classList.toggle('selected')
-  buttonForest.classList.remove('selected')
-  buttonRain.classList.remove('selected')
-  functions.playPauseSounds()
+  fireCard.classList.toggle('active')
+  sounds.playAudio(sounds.fireAudio, fireCard)
+})
+
+fireVolume.addEventListener('input', function () {
+  sounds.adjustVolume(sounds.fireAudio, fireVolume.value)
 })
 
 buttonForest.addEventListener('click', function () {
-  buttonCoffe.classList.remove('selected')
-  buttonFire.classList.remove('selected')
-  buttonForest.classList.toggle('selected')
-  buttonRain.classList.remove('selected')
-  functions.playPauseSounds()
+  forestCard.classList.toggle('active')
+  sounds.playAudio(sounds.forestAudio, forestCard)
+})
+
+forestVolume.addEventListener('input', function () {
+  sounds.adjustVolume(sounds.forestAudio, forestVolume.value)
 })
 
 buttonRain.addEventListener('click', function () {
-  buttonCoffe.classList.remove('selected')
-  buttonFire.classList.remove('selected')
-  buttonForest.classList.remove('selected')
-  buttonRain.classList.toggle('selected')
-  functions.playPauseSounds()
+  rainCard.classList.toggle('active')
+  sounds.playAudio(sounds.rainAudio, rainCard)
+})
+
+rainVolume.addEventListener('input', function () {
+  sounds.adjustVolume(sounds.rainAudio, rainVolume.value)
 })
 
 buttonLight.addEventListener('click', function () {
@@ -91,12 +105,3 @@ buttonDark.addEventListener('click', function () {
   buttonLight.classList.toggle('hide')
   document.querySelector('body').classList.remove('dark-theme')
 })
-
-export {
-  buttonCoffe, 
-  buttonFire, 
-  buttonForest, 
-  buttonRain, 
-  buttonPause, 
-  buttonPlay
-}
