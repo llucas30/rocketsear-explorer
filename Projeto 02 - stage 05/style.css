@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --primary-color: #323238;
+  --dark-primary-color: #c4c4cc;
+  --card-bg: #e1e1e6;
+  --dark-card-bg: #29292e;
+  --card-selected: #02799d;
+  --dark-card-selected: #0a3442;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--primary-color);
+  font-weight: 500;
+
+  background-color: white;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 19rem;
+
+  min-height: 100vh;
+}
+
+.wrapper button svg path {
+  fill: var(--primary-color);
+}
+
+.wrapper aside button svg path:nth-child(1) {
+  fill: var(--card-bg);
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.card {
+  position: relative;
+}
+
+.sound-btns .card.selected input[type='range'] {
+  background: white;
+  background-image: white;
+}
+
+.sound-btns .card.selected input[type='range']::-webkit-slider-thumb {
+  background: white;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  width: 12rem;
+  height: 0.5rem;
+  top: 13rem;
+  right: 1rem;
+  background: var(--primary-color);
+  border-radius: 9999px;
+  background-image: var(--primary-color);
+  position: absolute;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+main button svg {
+  width: clamp(3.2rem, 2rem + 12vw, 6.4rem);
+}
+
+main {
+  justify-content: center;
+}
+
+#timer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  font-size: clamp(6rem, 8rem + 7vw, 14rem);
+}
+
+#controls {
+  display: flex;
+  gap: 3.2rem;
+}
+
+aside {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 3.2rem;
+}
+
+.wrapper .sound-btns .selected svg path:nth-child(1) {
+  fill: var(--card-selected);
+}
+
+.selected path:nth-child(2) {
+  fill: white;
+}
+
+.hide {
+  display: none;
+}
+
+.theme-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 5rem;
+  margin-top: 3rem;
+}
+
+.dark-theme {
+  background-color: #121214;
+  --primary-color: var(--dark-primary-color);
+  --card-bg: var(--dark-card-bg);
+  --card-selected: var(--dark-card-selected);
+}
