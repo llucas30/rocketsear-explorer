@@ -10,12 +10,8 @@ export default function() {
     'https://github.com/maykbrito/automatic-video-creator/blob/master/audios/button-press.wav?raw=true'
   )
 
-  buttonPressAudio.volume = 0.02
+  buttonPressAudio.volume = 0.03
   kitchenTimer.volume = 0.05
-
-  function pressButton(button) {
-    button.play()
-  }
 
   function playAudio(sound, card) {
     sound.loop = true
@@ -30,7 +26,6 @@ export default function() {
   return {
     adjustVolume, 
     playAudio, 
-    pressButton, 
     forestAudio, 
     rainAudio, 
     fireAudio, 
