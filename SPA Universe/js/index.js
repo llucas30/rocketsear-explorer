@@ -10,19 +10,3 @@ router.handle()
 
 window.onpopstate = () => router.handle()
 window.route = () => router.route()
-
-
-/*   COMANDOS NO TERMINAL:
-  node -v 
-    verifica versão do node.js
------------------------------------------------------------------------------
-  npm init -y
-    cria package.json
------------------------------------------------------------------------------
-  npm install lite-server
-    cria package-lock.json e node_modules (pacotes para criar um servidor) 
-------------------------------------------------------------------------------
-  npm start
-    abre no navegador o projeto através de um servidor
-------------------------------------------------------------------------------
-*/
